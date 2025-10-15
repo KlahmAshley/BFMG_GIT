@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -46,7 +47,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == ("Ground"))
         {
             Bodyanimator.SetBool("IsFalling", false);
+            Bodyanimator.SetBool("IsFloating", false);
+
             Hairanimator.SetBool("IsFloating", false);
+            Hairanimator.SetBool("IsFalling", false);
+
             isGrounded = true;
         }
     }
