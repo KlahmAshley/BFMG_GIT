@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     public float maxPower = 1f;
     private float currentPower;
     public float powerForce = 0.5f;
-    private int bubbleCount = 0;
 
     public GameObject spawnPoint;
 
@@ -24,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject WandBehind;
     public GameObject WandFront;
+
+    public TMP_Text EBCounter;
+    public int remainingEB = 15;
+    public int collected = 0;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         currentPower = maxPower;
         WandBehind.SetActive(true);
         WandFront.SetActive(false);
+        EBCounter.text = collected + "/" + remainingEB;
     }
 
     // Update is called once per frame
@@ -144,7 +149,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (collision.gameObject.tag == ("Bubble"))
         {
-            bubbleCount++;
+            collected++;
+            EBCounter.text = collected + "/" + remainingEB;
             Destroy(collision.gameObject);
         }
 
@@ -152,5 +158,10 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.transform.position = spawnPoint.transform.position;
         }
+    }
+
+    public float GetPowerProportion()
+    {
+        return currentPower / maxPower;
     }
 }
