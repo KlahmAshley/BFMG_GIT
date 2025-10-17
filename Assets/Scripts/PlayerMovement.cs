@@ -13,12 +13,16 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody rb;
     private bool isGrounded = true;
     public Animator Bodyanimator;
-    public Animator Hairanimator;
+
+    public GameObject WandBehind;
+    public GameObject WandFront;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb.GetComponent<Rigidbody>();
+        WandBehind.SetActive(true);
+        WandFront.SetActive(false);
 
     }
 
@@ -48,10 +52,8 @@ public class PlayerMovement : MonoBehaviour
         {
             Bodyanimator.SetBool("IsFalling", false);
             Bodyanimator.SetBool("IsFloating", false);
-
-            Hairanimator.SetBool("IsFloating", false);
-            Hairanimator.SetBool("IsFalling", false);
-
+            WandBehind.SetActive(true);
+            WandFront.SetActive(false);
             isGrounded = true;
         }
     }
@@ -62,29 +64,24 @@ public class PlayerMovement : MonoBehaviour
         if (horizontal != 0f)
         {
             Bodyanimator.SetBool("IsWalking", true);
-            Hairanimator.SetBool("IsWalking", true);
         }
 
         if (horizontal == 0f)
         {
             Bodyanimator.SetBool("IsWalking", false);
-            Hairanimator.SetBool("IsWalking", false);
         }
 
-        if (vertical == 0f)
+       if (vertical != 0f)
         {
-            Hairanimator.SetBool("IsFalling", false);
-            Hairanimator.SetBool("IsFloating", false);
-
-            Bodyanimator.SetBool("IsFalling", false);
-            Bodyanimator.SetBool("IsFloating", false);
+            Bodyanimator.SetBool("IsWalking", true);
         }
-
+     
 
         if (Input.GetAxisRaw("Jump") < 0f && !isGrounded)
         {
             Bodyanimator.SetBool("IsFloating", true);
-            Hairanimator.SetBool("IsFloating", true);
+            WandBehind.SetActive(false);
+            WandFront.SetActive(true);
         }
 
         if (Input.GetAxisRaw("Jump") > 0f) //&& currentPower > 0f)
@@ -96,40 +93,26 @@ public class PlayerMovement : MonoBehaviour
             Bodyanimator.SetBool("IsWalking", false);
             Bodyanimator.SetBool("IsFalling", false);
             Bodyanimator.SetBool("IsFloating", true);
-
-            Hairanimator.SetBool("IsWalking", false);
-            Hairanimator.SetBool("IsFalling", false);
-            Hairanimator.SetBool("IsFloating", true);
+            WandBehind.SetActive(false);
+            WandFront.SetActive(true);
         }
-        /*else if (Physics.Raycast(grounded.position, Vector2.down, 1f, LayerMask.GetMask("Ground")))//&& currentPower < maxPower || currentPower == 0.0f)
-        {
-            currentPower += Time.deltaTime;
-            bubbleEffect.gameObject.SetActive(false);
-            animator.SetBool("IsFloating", false);
-            animator.SetBool("IsFalling", true);
-            animator.SetBool("IsWalking", false);
-
-        }
-        */
+     
         else
         {
             // bubbleEffect.gameObject.SetActive(false);
-            Hairanimator.SetBool("ISWalking", false);
-            Hairanimator.SetBool("IsFloating", false);
-            Hairanimator.SetBool("IsFalling", true);
-
             Bodyanimator.SetBool("ISWalking", false);
             Bodyanimator.SetBool("IsFloating", false);
             Bodyanimator.SetBool("IsFalling", true);
+            WandBehind.SetActive(true);
+            WandFront.SetActive(false);
         }
 
         if (isGrounded == true)
         {
             Bodyanimator.SetBool("IsFloating", false);
             Bodyanimator.SetBool("IsFalling", false);
-
-            Hairanimator.SetBool("IsFloating", false);
-            Hairanimator.SetBool("IsFalling", false);
+            WandBehind.SetActive(true);
+            WandFront.SetActive(false);
             // bubbleEffect.gameObject.SetActive(false);
 
         }
