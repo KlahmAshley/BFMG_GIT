@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour
 {
 
     [SerializeField]
+    private float horizontal;
+    private float vertical;
     public float speed = 6f;
     private Vector3 moveDirection;
     public float jump;
@@ -18,12 +20,19 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject spawnPoint;
 
+    public Animator Bodyanimator;
+
+    public GameObject WandBehind;
+    public GameObject WandFront;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb.GetComponent<Rigidbody>();
         currentPower = maxPower;
+        WandBehind.SetActive(true);
+        WandFront.SetActive(false);
     }
 
     // Update is called once per frame
@@ -42,23 +51,75 @@ public class PlayerMovement : MonoBehaviour
 
         Debug.Log("Current power is: " + currentPower);
 
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
 
     }
 
     private void FixedUpdate()
     {
+        if (horizontal != 0f)
+        {
+            Bodyanimator.SetBool("IsWalking", true);
+        }
+
+        if (horizontal == 0f)
+        {
+            Bodyanimator.SetBool("IsWalking", false);
+        }
+
+        if (vertical != 0f)
+        {
+            Bodyanimator.SetBool("IsWalking", true);
+        }
+
+
+        if (Input.GetAxisRaw("Jump") < 0f && !isGrounded)
+        {
+            Bodyanimator.SetBool("IsFloating", true);
+            WandBehind.SetActive(false);
+            WandFront.SetActive(true);
+        }
+
         if (Input.GetAxisRaw("Jump") > 0f && currentPower > 0f)
         {
             Debug.Log("She bubble on my floatie till i Mcgee");
             currentPower -= Time.deltaTime;
             rb.AddForce(rb.transform.up * powerForce, ForceMode.Impulse);
+
+            Bodyanimator.SetBool("IsWalking", false);
+            Bodyanimator.SetBool("IsFalling", false);
+            Bodyanimator.SetBool("IsFloating", true);
+            WandBehind.SetActive(false);
+            WandFront.SetActive(true);
         }
+
+        else
+        {
+            // bubbleEffect.gameObject.SetActive(false);
+            Bodyanimator.SetBool("ISWalking", false);
+            Bodyanimator.SetBool("IsFloating", false);
+            Bodyanimator.SetBool("IsFalling", true);
+            WandBehind.SetActive(true);
+            WandFront.SetActive(false);
+        }
+
+        if (isGrounded == true)
+        {
+            Bodyanimator.SetBool("IsFloating", false);
+            Bodyanimator.SetBool("IsFalling", false);
+            WandBehind.SetActive(true);
+            WandFront.SetActive(false);
+            // bubbleEffect.gameObject.SetActive(false);
+
+        }
+
     }
 
     private void Movement()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+       // float horizontal = Input.GetAxis("Horizontal");
+      //  float vertical = Input.GetAxis("Vertical");
         moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
@@ -74,6 +135,11 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.tag == ("Ground"))
         {
             isGrounded = true;
+
+            Bodyanimator.SetBool("IsFalling", false);
+            Bodyanimator.SetBool("IsFloating", false);
+            WandBehind.SetActive(true);
+            WandFront.SetActive(false);
         }
 
         if (collision.gameObject.tag == ("Bubble"))
