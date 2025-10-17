@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerMovement : MonoBehaviour
+public class Playermove2 : MonoBehaviour
 {
 
     [SerializeField]
@@ -71,11 +71,11 @@ public class PlayerMovement : MonoBehaviour
             Bodyanimator.SetBool("IsWalking", false);
         }
 
-       if (vertical != 0f)
+        if (vertical != 0f)
         {
             Bodyanimator.SetBool("IsWalking", true);
         }
-     
+
 
         if (Input.GetAxisRaw("Jump") < 0f && !isGrounded)
         {
@@ -96,7 +96,7 @@ public class PlayerMovement : MonoBehaviour
             WandBehind.SetActive(false);
             WandFront.SetActive(true);
         }
-     
+
         else
         {
             // bubbleEffect.gameObject.SetActive(false);
