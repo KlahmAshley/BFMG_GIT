@@ -24,7 +24,8 @@ public class Toggle : MonoBehaviour
         Hair.GetComponent<SkinnedMeshRenderer>().material = Base;
 
         Lut1.SetActive(false);
- 
+        Lut2.SetActive(false);
+        Lut3.SetActive(false);
     }
     void Update()
     {
@@ -59,20 +60,26 @@ public class Toggle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Lut1.SetActive(true);
-            Lut2.SetActive(true);
-            Lut3.SetActive(true);
+            Lut2.SetActive(false);
+            Lut3.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha7))
         {
-            Lut1.SetActive(true);
+            Lut1.SetActive(false);
+            Lut2.SetActive(true);
+            Lut3.SetActive(false);
         }
         if (Input.GetKeyDown(KeyCode.Alpha8))
         {
-            Lut1.SetActive(true);
+            Lut1.SetActive(false);
+            Lut2.SetActive(false);
+            Lut3.SetActive(true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha9))
         {
-            Lut1.SetActive(true);
+            Lut1.SetActive(false);
+            Lut2.SetActive(false);
+            Lut3.SetActive(false);
         }
     }
 }

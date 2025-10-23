@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     public int remainingEB = 15;
     public int collected = 0;
 
+    public GameObject EndScreen;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
         WandBehind.SetActive(true);
         WandFront.SetActive(false);
         EBCounter.text = collected + "/" + remainingEB;
+        EndScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -58,6 +60,12 @@ public class PlayerMovement : MonoBehaviour
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
+        if(collected == remainingEB)
+        {
+           Time.timeScale = 0f;
+            EndScreen.SetActive(true);
+        }
 
     }
 
