@@ -14,6 +14,7 @@ public class Toggle : MonoBehaviour
     public Material ToonShader;
 
     public GameObject Lut1;
+    public GameObject Lut2;
 
 
     void Start()
@@ -22,6 +23,7 @@ public class Toggle : MonoBehaviour
         Hair.GetComponent<SkinnedMeshRenderer>().material = Base;
 
         Lut1.SetActive(false);
+        Lut2.SetActive(false);
  
     }
     void Update()
@@ -55,6 +57,10 @@ public class Toggle : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha6))
         {
             Lut1.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7))
+        {
+            Lut2.SetActive(true);
         }
     }
 }
