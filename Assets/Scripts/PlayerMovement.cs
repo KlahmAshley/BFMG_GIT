@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject WandFront;
 
     public TMP_Text EBCounter;
-    public int remainingEB = 15;
+    public int remainingEB = 10;
     public int collected = 0;
 
     public GameObject EndScreen;
