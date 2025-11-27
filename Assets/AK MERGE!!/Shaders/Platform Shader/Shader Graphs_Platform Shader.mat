@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2553056145716457337
+--- !u!114 &-2192086095241516965
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,15 +20,13 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: outsideMat
-  m_Shader: {fileID: -6465566751694194690, guid: f662609e79e72e94f9f1d6dcff15984f, type: 3}
-  m_Parent: {fileID: -876546973899608171, guid: f662609e79e72e94f9f1d6dcff15984f, type: 3}
+  m_Name: Shader Graphs_Platform Shader
+  m_Shader: {fileID: -6465566751694194690, guid: 5c8a0cd42ebc8dc4bb0bca4049ef27c9, type: 3}
+  m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
-  m_InvalidKeywords:
-  - _ALPHAPREMULTIPLY_ON
-  - _SURFACE_TYPE_TRANSPARENT
-  m_LightmapFlags: 4
+  m_InvalidKeywords: []
+  m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
@@ -39,13 +37,33 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _SampleTexture2D_ccaea8628de945ea875394c1939279e8_Texture_1_Texture2D:
-        m_Texture: {fileID: 2800000, guid: 876e9ccd21fa93d49b6a209f762b9337, type: 3}
+    - _SampleTexture2D_54658e1bff74456db0ff95a2b2bcb50a_Texture_1_Texture2D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Texture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Depth: 1.11
     - _QueueControl: 0
-    m_Colors: []
+    - _QueueOffset: 0
+    m_Colors:
+    - _Color: {r: 7.9270787, g: 5.788263, b: 7.9270787, a: 1}
+    - _FresnelPower: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
