@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
+using Unity.VisualScripting;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float vertical;
     public float speed = 6f;
+    public float rotationSpeed = 1000f;
     private Vector3 moveDirection;
     public float jump;
     public Rigidbody rb;
     private bool isGrounded = true;
+    private RaycastHit hit;
 
     public float maxPower = 1f;
     private float currentPower;
@@ -24,6 +27,14 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject WandBehind;
     public GameObject WandFront;
+
+    public GameObject dialogueOne;
+    public GameObject dialogueTwo;
+    public GameObject dialogueThree;
+    private bool Bogalogue = false;
+    private bool Bogalogue2 = false;
+    private bool Bogalogue3 = false;
+    private float waitTime = 0f;
 
     public TMP_Text EBCounter;
     public int remainingEB = 10;
@@ -43,9 +54,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        Movement();
+        //Debug.Log(waitTime);
+        waitTime += Time.deltaTime;
+        Dialogue();
 
         if (isGrounded)
         {
@@ -71,6 +84,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Rotation();
+        Movement();
+        
+
         if (horizontal != 0f)
         {
             Bodyanimator.SetBool("IsWalking", true);
@@ -110,7 +127,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             // bubbleEffect.gameObject.SetActive(false);
-            Bodyanimator.SetBool("ISWalking", false);
+            Bodyanimator.SetBool("IsWalking", false);
             Bodyanimator.SetBool("IsFloating", false);
             Bodyanimator.SetBool("IsFalling", true);
             WandBehind.SetActive(true);
@@ -131,8 +148,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Movement()
     {
-       // float horizontal = Input.GetAxis("Horizontal");
-      //  float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
         moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
         transform.Translate(moveDirection * speed * Time.deltaTime);
 
@@ -166,10 +183,87 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.transform.position = spawnPoint.transform.position;
         }
+
+        if (collision.gameObject.tag == ("Bog"))
+        {
+            Bogalogue = true;
+            dialogueOne.SetActive(true);
+            dialogueTwo.SetActive(true);
+            dialogueThree.SetActive(true);
+        }
     }
 
     public float GetPowerProportion()
     {
         return currentPower / maxPower;
+    }
+
+    private void Rotation()
+    {
+        var mousePosition = Input.mousePosition;
+        var cameraRay = Camera.main.ScreenPointToRay(mousePosition);
+        var layerMask = LayerMask.GetMask("Ground");
+
+        if (Physics.Raycast(cameraRay, out hit, 100, layerMask))
+        {
+            var forward = hit.point - this.transform.position;
+            var rotation = Quaternion.LookRotation(forward);
+
+            this.transform.rotation = new Quaternion(0, rotation.y, 0, rotation.w).normalized;
+        }
+    }
+
+    private void Dialogue()
+    {
+        while (Bogalogue && waitTime >= 0.5)
+        {
+            if (Input.GetKey(KeyCode.E))
+            {
+                waitTime = 0;
+                Debug.Log("are you working?");
+                dialogueOne.SetActive(false);
+
+                Bogalogue = false;
+                Bogalogue2 = true;
+            }
+            
+            break;
+        }
+        
+
+        while (Bogalogue2 && waitTime >= 0.5)
+        {
+            ;
+            if (Input.GetKey(KeyCode.E))
+            {
+                waitTime = 0;
+                Debug.Log("test");
+                dialogueTwo.SetActive(false);
+
+                Bogalogue2 = false;
+                Bogalogue3 = true;
+
+            }
+            
+            break;
+        }
+
+        
+        while (Bogalogue3 && waitTime >= 0.5)
+        {
+
+            if (Input.GetKey(KeyCode.E))
+            {
+                waitTime = 0;
+                Debug.Log("test2");
+                dialogueThree.SetActive(false);
+                Bogalogue3 = false;
+            }
+            
+            
+            break;
+        }
+
+        
     }
 }

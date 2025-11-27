@@ -6,7 +6,18 @@ using UnityEngine.Rendering.PostProcessing;
 public class Toggle : MonoBehaviour
 {
     public GameObject Hair;
-  
+    public GameObject mainPlat;
+    public GameObject subPlat1;
+    public GameObject subPlat2;
+    public GameObject subPlat3;
+    public GameObject subPlat4;
+    public GameObject subPlat5;
+    public GameObject subPlat6;
+    public GameObject subPlat7;
+    public GameObject subPlat8;
+    public GameObject subPlat9;
+    public GameObject subPlat10;
+
     public Material Base;
     public Material Diffuse;
     public Material DiffuseAmbient;
@@ -15,7 +26,13 @@ public class Toggle : MonoBehaviour
 
     public GameObject Lut1;
     public GameObject Lut2;
-    public GameObject Lut3; 
+    public GameObject Lut3;
+
+    public Material Texture1;
+    public Material Texture2;
+    public Material base1;
+    public Material base2;
+
 
 
     void Start()
@@ -54,6 +71,36 @@ public class Toggle : MonoBehaviour
         {
             Hair.GetComponent<SkinnedMeshRenderer>().material = ToonShader;
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            mainPlat.GetComponent<MeshRenderer>().material = base1;
+            subPlat1.GetComponent<MeshRenderer>().material = base2;
+            subPlat2.GetComponent<MeshRenderer>().material = base2;
+            subPlat3.GetComponent<MeshRenderer>().material = base2;
+            subPlat4.GetComponent<MeshRenderer>().material = base2;
+            subPlat5.GetComponent<MeshRenderer>().material = base2;
+            subPlat6.GetComponent<MeshRenderer>().material = base2;
+            subPlat7.GetComponent<MeshRenderer>().material = base2;
+            subPlat8.GetComponent<MeshRenderer>().material = base2;
+            subPlat9.GetComponent<MeshRenderer>().material = base2;
+            subPlat10.GetComponent<MeshRenderer>().material = base2;
+
+        }
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            mainPlat.GetComponent<MeshRenderer>().material = Texture1;
+            subPlat1.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat2.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat3.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat4.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat5.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat6.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat7.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat8.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat9.GetComponent<MeshRenderer>().material = Texture2;
+            subPlat10.GetComponent<MeshRenderer>().material = Texture2;
         }
 
 
