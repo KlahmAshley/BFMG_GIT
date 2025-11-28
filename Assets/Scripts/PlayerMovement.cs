@@ -44,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject EndScreen;
 
+
+    public AudioSource jumpSound;
+    public AudioSource collectSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -113,11 +117,11 @@ public class PlayerMovement : MonoBehaviour
             WandBehind.SetActive(false);
             Particles.SetActive(true);
             WandFront.SetActive(true);
+        
         }
 
         if (Input.GetAxisRaw("Jump") > 0f && currentPower > 0f)
         {
-            Debug.Log("She bubble on my floatie till i Mcgee");
             currentPower -= Time.deltaTime;
             rb.AddForce(rb.transform.up * powerForce, ForceMode.Impulse);
 
@@ -127,6 +131,8 @@ public class PlayerMovement : MonoBehaviour
             WandBehind.SetActive(false);
             WandFront.SetActive(true);
             Particles.SetActive(true);
+      
+
         }
 
         else
@@ -177,12 +183,14 @@ public class PlayerMovement : MonoBehaviour
             WandBehind.SetActive(true);
             WandFront.SetActive(false);
             Particles.SetActive(false);
+            jumpSound.Play();
         }
 
         if (collision.gameObject.tag == ("Bubble"))
         {
             collected++;
             EBCounter.text = collected + "/" + remainingEB;
+            collectSound.Play();
             Destroy(collision.gameObject);
         }
 
