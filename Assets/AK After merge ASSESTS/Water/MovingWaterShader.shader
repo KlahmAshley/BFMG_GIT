@@ -1,4 +1,4 @@
-Shader "Custom/URP_OverlayUVScroll"
+Shader "UniversalRenderPipeline/WaterScroll"
 {
     Properties
     {
@@ -10,7 +10,7 @@ Shader "Custom/URP_OverlayUVScroll"
 
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalRenderPipeline" "RenderType" = "Opaque" }
+        Tags { "RenderPipeline" = "UniversalPipeline" "RenderType" = "Opaque" }
 
         Pass
         {
