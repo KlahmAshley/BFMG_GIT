@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject WandBehind;
     public GameObject WandFront;
+    public GameObject Particles;
+
 
     public GameObject dialogueOne;
     public GameObject dialogueTwo;
@@ -49,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
         currentPower = maxPower;
         WandBehind.SetActive(true);
         WandFront.SetActive(false);
+        Particles.SetActive(false);
         EBCounter.text = collected + "/" + remainingEB;
         EndScreen.SetActive(false);
     }
@@ -108,6 +111,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Bodyanimator.SetBool("IsFloating", true);
             WandBehind.SetActive(false);
+            Particles.SetActive(true);
             WandFront.SetActive(true);
         }
 
@@ -122,16 +126,17 @@ public class PlayerMovement : MonoBehaviour
             Bodyanimator.SetBool("IsFloating", true);
             WandBehind.SetActive(false);
             WandFront.SetActive(true);
+            Particles.SetActive(true);
         }
 
         else
         {
             // bubbleEffect.gameObject.SetActive(false);
-            Bodyanimator.SetBool("IsWalking", false);
             Bodyanimator.SetBool("IsFloating", false);
             Bodyanimator.SetBool("IsFalling", true);
             WandBehind.SetActive(true);
             WandFront.SetActive(false);
+            Particles.SetActive(false);
         }
 
         if (isGrounded == true)
@@ -140,6 +145,7 @@ public class PlayerMovement : MonoBehaviour
             Bodyanimator.SetBool("IsFalling", false);
             WandBehind.SetActive(true);
             WandFront.SetActive(false);
+            Particles.SetActive(false);
             // bubbleEffect.gameObject.SetActive(false);
 
         }
@@ -170,6 +176,7 @@ public class PlayerMovement : MonoBehaviour
             Bodyanimator.SetBool("IsFloating", false);
             WandBehind.SetActive(true);
             WandFront.SetActive(false);
+            Particles.SetActive(false);
         }
 
         if (collision.gameObject.tag == ("Bubble"))

@@ -33,6 +33,19 @@ public class Toggle : MonoBehaviour
     public Material base1;
     public Material base2;
 
+    public GameObject bubble;
+    public GameObject bubble1;
+    public GameObject bubble2;
+    public GameObject bubble3;
+    public GameObject bubble4;
+    public GameObject bubble5;
+    public GameObject bubble6;
+    public GameObject bubble7;
+    public GameObject bubble8;
+    public GameObject bubble9;
+
+    public Material bubbleMat;
+    public Material bubbleTex;
 
 
     void Start()
@@ -86,8 +99,18 @@ public class Toggle : MonoBehaviour
             subPlat8.GetComponent<MeshRenderer>().material = base2;
             subPlat9.GetComponent<MeshRenderer>().material = base2;
             subPlat10.GetComponent<MeshRenderer>().material = base2;
-
+            bubble.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble1.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble2.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble3.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble4.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble5.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble6.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble7.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble8.GetComponent<MeshRenderer>().material = bubbleMat;
+            bubble9.GetComponent<MeshRenderer>().material = bubbleMat;
         }
+
         if (Input.GetKeyDown(KeyCode.M))
         {
             mainPlat.GetComponent<MeshRenderer>().material = Texture1;
@@ -101,6 +124,17 @@ public class Toggle : MonoBehaviour
             subPlat8.GetComponent<MeshRenderer>().material = Texture2;
             subPlat9.GetComponent<MeshRenderer>().material = Texture2;
             subPlat10.GetComponent<MeshRenderer>().material = Texture2;
+            bubble.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble1.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble2.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble3.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble4.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble5.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble6.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble7.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble8.GetComponent<MeshRenderer>().material = bubbleTex;
+            bubble9.GetComponent<MeshRenderer>().material = bubbleTex;
+
         }
 
 

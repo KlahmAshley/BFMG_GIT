@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6675033027900740543}
   - component: {fileID: 8928851713596016804}
   - component: {fileID: 6823862401445937457}
+  - component: {fileID: 4084120168232625033}
   m_Layer: 0
   m_Name: BubbleOutside
   m_TagString: Untagged
@@ -89,6 +90,29 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &4084120168232625033
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311864197384209662}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.009999999
+  m_Height: 0.019999998
+  m_Direction: 1
+  m_Center: {x: -4.6566126e-10, y: -0.000000007916242, z: 0.0000000018626451}
 --- !u!1 &1455130071937880413
 GameObject:
   m_ObjectHideFlags: 0
