@@ -51,7 +51,7 @@ public class Toggle : MonoBehaviour
     void Start()
     {
         // _Material = takenfrom.GetComponent<MeshRenderer>().material;
-        Hair.GetComponent<SkinnedMeshRenderer>().material = Base;
+        Hair.GetComponent<MeshRenderer>().material = Base;
 
         Lut1.SetActive(false);
         Lut2.SetActive(false);
@@ -62,27 +62,27 @@ public class Toggle : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Hair.GetComponent<SkinnedMeshRenderer>().material = Base;
+            Hair.GetComponent<MeshRenderer>().material = Base;
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            Hair.GetComponent<SkinnedMeshRenderer>().material = Diffuse;
+            Hair.GetComponent<MeshRenderer>().material = Diffuse;
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Hair.GetComponent<SkinnedMeshRenderer>().material = DiffuseAmbient;
+            Hair.GetComponent<MeshRenderer>().material = DiffuseAmbient;
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            Hair.GetComponent<SkinnedMeshRenderer>().material = Specular;
+            Hair.GetComponent<MeshRenderer>().material = Specular;
 
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            Hair.GetComponent<SkinnedMeshRenderer>().material = ToonShader;
+            Hair.GetComponent<MeshRenderer>().material = ToonShader;
 
         }
 
